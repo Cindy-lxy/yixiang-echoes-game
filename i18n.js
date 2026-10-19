@@ -2,7 +2,8 @@
 // Localization is presentation-only. Story strings, IDs, branches and saved progress stay Chinese.
 window.L10n=(()=>{
  const key='vn:yixiang-echo-7f3a2b8c:language',catalog=window.EN_TEXT||{},hasHan=/[\u3400-\u9fff]/;
- let language='zh';try{language=localStorage.getItem(key)==='en'?'en':'zh';}catch(e){}
+ // 默认每次打开页面都使用中文；英文仅在当前页面内由用户手动切换。
+ let language='zh';
  const records=new Set(),sources=new WeakMap(),attributes=new WeakMap(),cache=new Map(),missing=new Set();
  const trie={};for(const [zh,en] of Object.entries(catalog)){if(!zh)continue;let n=trie;for(const ch of zh)n=n[ch]||(n[ch]={});n.$=en;}
  function english(value){
